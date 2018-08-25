@@ -19,12 +19,26 @@ version := "1.0"
 // Note, it's not required for you to define these three settings. These are
 // mostly only necessary if you intend to publish your library's binaries on a
 // place like Sonatype or Bintray.
-
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 
 // Want to use a published library in your project?
 // You can define other libraries as dependencies in your build like this:
 libraryDependencies += "org.typelevel" %% "cats-core" % "1.1.0"
 libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.0"
+libraryDependencies ++= {
+  val akkaVersion = "2.4.12"
+  Seq(
+    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-core" % "2.4.11",
+    "com.typesafe.akka" %% "akka-http-experimental" % "2.4.11",
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "2.4.11",
+    "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
+    "ch.qos.logback" % "logback-classic" % "1.1.3",
+    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+    "org.scalatest" %% "scalatest" % "2.2.0" % "test"
+  )
+}
+
 // Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 // we're adding the cats dependency to the set of dependencies that sbt will go
 // and fetch when it starts up.
