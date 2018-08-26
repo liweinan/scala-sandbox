@@ -13,7 +13,7 @@ class ChecksumACC {
 object ChecksumACC {
   private val cache = Map[String, Int]()
 
-  def calc(s: String): Int =
+  def calc(s: String): Int = {
     if (cache.contains(s))
       cache(s)
     else {
@@ -24,7 +24,9 @@ object ChecksumACC {
       cache += (s -> cs)
       cs
     }
+  }
 }
+
 
 
 

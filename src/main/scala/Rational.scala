@@ -1,5 +1,4 @@
 class Rational(d: Int) {
-  println(String.format("Hello, Martian! %d", d))
 }
 
 object Rational {
