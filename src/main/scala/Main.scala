@@ -33,12 +33,11 @@ object Main extends App {
 
   println(describe(Nil))
 
-//  def foo: Unit = {
-//    expr match {
-//      case List(0, _*) => println("FOUND")
-//      case _ => // nothing
-//    }
-//  }
-
+  //  def foo: Unit = {
+  //    expr match {
+  //      case List(0, _*) => println("FOUND")
+  //      case _ => // nothing
+  //    }
+  //  }
 
 }

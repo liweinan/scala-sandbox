@@ -7,7 +7,6 @@ object Fact {
     for (arg <- args)
       println(arg + ": " + calc(arg))
 
-
   }
 
   def fact(x: BigInteger): BigInteger =

@@ -27,6 +27,3 @@ object ChecksumACC {
   }
 }
 
-
-
-
