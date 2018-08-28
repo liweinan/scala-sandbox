@@ -1,5 +1,8 @@
 package com.example
 
+/**
+ * https://developer.lightbend.com/guides/akka-http-quickstart-scala/backend-actor.html
+ */
 //#user-registry-actor
 import akka.actor.{ Actor, ActorLogging, Props }
 
