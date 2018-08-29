@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/akka-http-quickstart-scala.iml" filepath="$PROJECT_DIR$/.idea/modules/akka-http-quickstart-scala.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/root.iml" filepath="$PROJECT_DIR$/.idea/modules/root.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/root-build.iml" filepath="$PROJECT_DIR$/.idea/modules/root-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root-build.iml" filepath="$PROJECT_DIR$/.idea/modules/root-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/scala-sandbox.iml" filepath="$PROJECT_DIR$/.idea/scala-sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/scala-sandbox.iml" filepath="$PROJECT_DIR$/.idea/scala-sandbox.iml" />
     </modules>
   </component>
