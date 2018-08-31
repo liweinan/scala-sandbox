@@ -1,3 +1,5 @@
+import akka.stream._
+import akka.stream.scaladsl._
 import akka.actor.ActorSystem
 
 object LifecycleDemo extends App {
