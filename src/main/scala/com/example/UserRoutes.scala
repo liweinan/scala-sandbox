@@ -1,6 +1,6 @@
 package com.example
 
-import akka.actor.{ActorRef, ActorSystem}
+import akka.actor.{ ActorRef, ActorSystem }
 import akka.event.Logging
 
 import scala.concurrent.duration._
@@ -37,55 +37,55 @@ trait UserRoutes extends JsonSupport {
   //#users-get-post
   //#users-get-delete   
   lazy val userRoutes: Route =
-  pathPrefix("users") {
-    concat(
-      //#users-get-delete
-      pathEnd {
-        concat(
-          get {
-            val users: Future[Users] =
-              (userRegistryActor ? GetUsers).mapTo[Users]
-            complete(users)
-          },
-          post {
-            entity(as[User]) { user =>
-              val userCreated: Future[ActionPerformed] =
-                (userRegistryActor ? CreateUser(user)).mapTo[ActionPerformed]
-              onSuccess(userCreated) { performed =>
-                log.info("Created user [{}]: {}", user.name, performed.description)
-                complete((StatusCodes.Created, performed))
+    pathPrefix("users") {
+      concat(
+        //#users-get-delete
+        pathEnd {
+          concat(
+            get {
+              val users: Future[Users] =
+                (userRegistryActor ? GetUsers).mapTo[Users]
+              complete(users)
+            },
+            post {
+              entity(as[User]) { user =>
+                val userCreated: Future[ActionPerformed] =
+                  (userRegistryActor ? CreateUser(user)).mapTo[ActionPerformed]
+                onSuccess(userCreated) { performed =>
+                  log.info("Created user [{}]: {}", user.name, performed.description)
+                  complete((StatusCodes.Created, performed))
+                }
               }
             }
-          }
-        )
-      },
-      //#users-get-post
+          )
+        },
+        //#users-get-post
+        //#users-get-delete
+        path(Segment) { name =>
+          concat(
+            get {
+              //#retrieve-user-info
+              val maybeUser: Future[Option[User]] =
+                (userRegistryActor ? GetUser(name)).mapTo[Option[User]]
+              rejectEmptyResponse {
+                complete(maybeUser)
+              }
+              //#retrieve-user-info
+            },
+            delete {
+              //#users-delete-logic
+              val userDeleted: Future[ActionPerformed] =
+                (userRegistryActor ? DeleteUser(name)).mapTo[ActionPerformed]
+              onSuccess(userDeleted) { performed =>
+                log.info("Deleted user [{}]: {}", name, performed.description)
+                complete((StatusCodes.OK, performed))
+              }
+              //#users-delete-logic
+            }
+          )
+        }
+      )
       //#users-get-delete
-      path(Segment) { name =>
-        concat(
-          get {
-            //#retrieve-user-info
-            val maybeUser: Future[Option[User]] =
-              (userRegistryActor ? GetUser(name)).mapTo[Option[User]]
-            rejectEmptyResponse {
-              complete(maybeUser)
-            }
-            //#retrieve-user-info
-          },
-          delete {
-            //#users-delete-logic
-            val userDeleted: Future[ActionPerformed] =
-              (userRegistryActor ? DeleteUser(name)).mapTo[ActionPerformed]
-            onSuccess(userDeleted) { performed =>
-              log.info("Deleted user [{}]: {}", name, performed.description)
-              complete((StatusCodes.OK, performed))
-            }
-            //#users-delete-logic
-          }
-        )
-      }
-    )
-    //#users-get-delete
-  }
+    }
   //#all-routes
 }
