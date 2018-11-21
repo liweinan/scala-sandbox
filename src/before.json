@@ -1,0 +1,36 @@
+{
+  "book": {
+    "@author": "bar",
+X    "@title": "foo",
+    "rest": [
+      {
+        "@href": "http://127.0.0.1:8081/book/foo",
+        "@rel": "self"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/book/foo",
+        "@rel": "update"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/book/foo",
+        "@rel": "remove"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/books",
+        "@rel": "list"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/books",
+        "@rel": "add"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/book/foo/comment-collection",
+        "@rel": "comment-collection"
+      },
+      {
+        "@href": "http://127.0.0.1:8081/book/foo/comments",
+        "@rel": "comments"
+      }
+    ]
+  }
+}
